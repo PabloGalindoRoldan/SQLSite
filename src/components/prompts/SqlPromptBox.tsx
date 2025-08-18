@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RotateCw } from "lucide-react"; // icon
+import { RotateCw } from "lucide-react"; // icono
 
 export default function SqlPromptBox() {
   const prompts = [
@@ -32,20 +32,20 @@ export default function SqlPromptBox() {
   return (
     <div className="relative text-gray-600 mb-4">
       <div className="flex items-start justify-between">
-        {/* Left spacer with same width as the button */}
+        {/* Espaciador izquierdo con el mismo ancho que el botón */}
         <div className="flex-shrink-0 w-6"></div>
 
-        {/* Centered text */}
+        {/* Texto centrado */}
         <p className="text-sm text-center flex-1 px-2">
           {currentPrompt}
         </p>
 
-        {/* Refresh button */}
+        {/* Botón de refrescar */}
         <div className="flex-shrink-0 w-6">
           <button
             onClick={refreshPrompt}
             className="p-1 rounded-md hover:bg-gray-200 transition w-full"
-            title="New Problem"
+            title="Nuevo Problema"
           >
             <RotateCw className="h-4 w-4 text-gray-600 mx-auto" />
           </button>
