@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
+import FilmSeedSQL from "./seeds/FilmSeedSQL";
 
 export default function LandingPage() {
   const [db, setDb] = useState<any>(null);
@@ -15,19 +16,7 @@ export default function LandingPage() {
       });
       const database = new SQL.Database();
 
-      database.run(`
-        CREATE TABLE directors (id INTEGER, name TEXT, birth_year INTEGER);
-        CREATE TABLE films (id INTEGER, title TEXT, year INTEGER, director_id INTEGER);
-
-        INSERT INTO directors VALUES
-          (1, 'Christopher Nolan', 1970),
-          (2, 'Hayao Miyazaki', 1941);
-
-        INSERT INTO films VALUES
-          (1, 'Inception', 2010, 1),
-          (2, 'Interstellar', 2014, 1),
-          (3, 'Spirited Away', 2001, 2);
-      `);
+      database.run(FilmSeedSQL);
 
       setDb(database);
     };
@@ -59,14 +48,22 @@ export default function LandingPage() {
       </header>
 
       {/* Database Schema */}
-      <section className="bg-white rounded-2xl shadow p-4 mb-6">
-        <h2 className="text-lg text-gray-700 font-semibold mb-2">
-          Database Schema
-        </h2>
-        <pre className="text-sm text-gray-700">
-          {`films(id, title, year, director_id)
-directors(id, name, birth_year)`}
-        </pre>
+      <section className="bg-white rounded-2xl shadow p-4 mb-6 flex justify-center">
+        <div className="max-w-full overflow-x-auto">
+          <h2 className="text-lg text-gray-700 font-semibold mb-2 text-center">
+            Esquema de la Base de Datos
+          </h2>
+          <pre className="text-sm text-gray-700 text-left whitespace-pre">
+            {`actor         = (actor_id, first_name, last_name)
+film          = (film_id, title, description, release_year, language_id, length)
+film_actor    = (actor_id, film_id)
+film_category = (film_id, category_id)
+inventory     = (inventory_id, film_id, store_id)
+language      = (language_id, name)
+store         = (store_id, manager_staff_id, address_id)
+category      = (category_id, name)`}
+          </pre>
+        </div>
       </section>
 
       {/* Main Workspace */}
@@ -96,7 +93,7 @@ directors(id, name, birth_year)`}
         {/* Right Panel */}
         <div className="bg-white rounded-2xl shadow p-4 flex flex-col">
           <h2 className="text-lg text-gray-700 font-semibold mb-2">Consola</h2>
-          <div className="flex-1 overflow-auto border rounded-md p-2 bg-gray-100 font-mono text-sm text-gray-600">
+          <div className="flex-1 overflow-auto border-none rounded-md p-2 font-mono text-sm text-gray-600">
             {results ? (
               <table className="table-auto border-collapse w-full">
                 <thead>
