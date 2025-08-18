@@ -44,7 +44,7 @@ export default function LandingPage() {
       <header className="text-center mb-6">
         <h1 className="text-3xl font-bold">SQLSite</h1>
         <p className="text-gray-600">
-          Aver si estudiamos para el{" "}
+          A ver si estudiamos para el{" "}
           <a
             className="hover:text-orange-500"
             href="https://docs.google.com/document/d/1CNiyND1OtaTER7AgvOCYiBmClQGCjCp-Ed2W9JGBn5Y/edit?usp=sharing"
