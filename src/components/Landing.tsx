@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import FilmSeedSQL from "./seeds/FilmSeedSQL";
+import SqlPromptBox from "./prompts/SqlPromptBox";
 
 export default function LandingPage() {
   const [db, setDb] = useState<any>(null);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<any>(null); // store a single result set
+  const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Load DB on mount
+  // Cargar la BDD cuando se inicializa el sitio
   useEffect(() => {
     const loadDb = async () => {
       const SQL = await initSqlJs({
@@ -23,31 +24,38 @@ export default function LandingPage() {
     loadDb();
   }, []);
 
-  // Run query on button click
+  // Ejecutar el Query al hacer click
   const runQuery = () => {
     if (!db) return;
     try {
-      const res = db.exec(query); // returns array of result sets
+      const res = db.exec(query); // devuelve un array de conjuntos de resultados
       setError(null);
-      setResults(res.length > 0 ? res[0] : null); // null if no results
+      setResults(res.length > 0 ? res[0] : null); // null si no hay resultados
     } catch (err) {
       setResults(null);
       if (err instanceof Error) setError(err.message);
-      else setError("Unknown error");
+      else setError("Error desconocido");
     }
   };
 
   return (
     <div className="min-h-screen bg-black-50 p-6">
-      {/* Header */}
+      {/* Encabezado */}
       <header className="text-center mb-6">
         <h1 className="text-3xl font-bold">SQLSite</h1>
         <p className="text-gray-600">
-          Aver si estudiamos para el parcial de esta manera...
+          Aver si estudiamos para el{" "}
+          <a
+            className="hover:text-orange-500"
+            href="https://docs.google.com/document/d/1CNiyND1OtaTER7AgvOCYiBmClQGCjCp-Ed2W9JGBn5Y/edit?usp=sharing"
+          >
+            parcial
+          </a>{" "}
+          de esta manera...
         </p>
       </header>
 
-      {/* Database Schema */}
+      {/* Esquema de la Base de Datos */}
       <section className="bg-white rounded-2xl shadow p-4 mb-6 flex justify-center">
         <div className="max-w-full overflow-x-auto">
           <h2 className="text-lg text-gray-700 font-semibold mb-2 text-center">
@@ -66,15 +74,21 @@ category      = (category_id, name)`}
         </div>
       </section>
 
-      {/* Main Workspace */}
+      {/* Área principal de trabajo */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Left Panel */}
-        <div className="bg-white rounded-2xl shadow p-4 flex flex-col">
-          <h2 className="text-lg text-gray-700 font-semibold mb-2">Problema</h2>
-          <p className="text-gray-600 mb-4">
-            Example: Select all films released after the year 2000.
-          </p>
+        {/* Panel izquierdo */}
+        <div className="bg-white rounded-2xl shadow p-4 flex flex-col relative">
+          {/* Encabezado con botón de refrescar */}
+          <div className="mb-2 relative">
+            <h2 className="text-lg text-gray-700 font-semibold text-center">
+              Problema
+            </h2>
+          </div>
 
+          {/* Componente de prompt */}
+          <SqlPromptBox />
+
+          {/* Entrada de consulta */}
           <textarea
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -90,7 +104,7 @@ category      = (category_id, name)`}
           </button>
         </div>
 
-        {/* Right Panel */}
+        {/* Panel derecho */}
         <div className="bg-white rounded-2xl shadow p-4 flex flex-col">
           <h2 className="text-lg text-gray-700 font-semibold mb-2">Consola</h2>
           <div className="flex-1 overflow-auto border-none rounded-md p-2 font-mono text-sm text-gray-600">
