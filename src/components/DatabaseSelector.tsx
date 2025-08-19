@@ -92,7 +92,7 @@ const DatabaseSelector: React.FC<Props> = ({ setDb }) => {
         </div>
 
         {/* Schema text */}
-        <div className="max-w-full overflow-x-auto rounded-md p-3 border border-gray-200 flex justify-center">
+        <div className="max-w-full overflow-x-auto rounded-md p-3 border-none flex justify-center">
             <pre className="text-sm text-gray-700 text-left whitespace-pre-wrap">
             {schemaPreview}
             </pre>
