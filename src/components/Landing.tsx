@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import FilmSeedSQL from "./seeds/FilmSeedSQL";
+import WorldSeedSql from "./seeds/WorldSeedSql";
 import SqlPromptBox from "./prompts/SqlPromptBox";
+import runSeed from "./seeds/RunSeed";
+import DatabaseSelector from "./DatabaseSelector";
 
 export default function LandingPage() {
   const [db, setDb] = useState<any>(null);
@@ -17,7 +20,8 @@ export default function LandingPage() {
       });
       const database = new SQL.Database();
 
-      database.run(FilmSeedSQL);
+      //database.run(FilmSeedSQL);
+      runSeed(database, WorldSeedSql);
 
       setDb(database);
     };
@@ -56,22 +60,8 @@ export default function LandingPage() {
       </header>
 
       {/* Esquema de la Base de Datos */}
-      <section className="bg-white rounded-2xl shadow p-4 mb-6 flex justify-center">
-        <div className="max-w-full overflow-x-auto">
-          <h2 className="text-lg text-gray-700 font-semibold mb-2 text-center">
-            Esquema de la Base de Datos
-          </h2>
-          <pre className="text-sm text-gray-700 text-left whitespace-pre">
-            {`actor         = (actor_id, first_name, last_name)
-film          = (film_id, title, description, release_year, language_id, length)
-film_actor    = (actor_id, film_id)
-film_category = (film_id, category_id)
-inventory     = (inventory_id, film_id, store_id)
-language      = (language_id, name)
-store         = (store_id, manager_staff_id, address_id)
-category      = (category_id, name)`}
-          </pre>
-        </div>
+      <section className="bg-white rounded-2xl shadow p-4 mb-6">
+        <DatabaseSelector setDb={setDb} />
       </section>
 
       {/* Área principal de trabajo */}
