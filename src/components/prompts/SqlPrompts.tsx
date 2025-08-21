@@ -258,7 +258,7 @@ export const sqlPrompts: Record<string, PromptItem[]> = {
   ],
   World: [
     {
-      prompt: "(FÁCIL) Mostrar todos los países.",
+      prompt: "(FÁCIL) Mostrar los países por nombre.",
       expected: [/SELECT/i, /name/i, /country/i, /FROM\s+country/i],
     },
     {
