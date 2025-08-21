@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import FilmSeedSQL from "./seeds/FilmSeedSQL";
 import WorldSeedSql from "./seeds/WorldSeedSql";
+import SakilaSeedSQL from "./seeds/SakilaSeedSQL";
 import SqlPromptBox from "./prompts/SqlPromptBox";
 import { sqlPrompts, PromptItem } from "./prompts/SqlPrompts";
 import runSeed from "./seeds/RunSeed";
@@ -28,9 +29,9 @@ export default function LandingPage() {
         locateFile: (file) => `https://sql.js.org/dist/${file}`,
       });
       const database = new SQL.Database();
-      if (selectedDb === "World") runSeed(database, WorldSeedSql);
-      else if (selectedDb === "Film") runSeed(database, FilmSeedSQL);
-      else if (selectedDb === "Sakila") runSeed(database, FilmSeedSQL);
+      if (selectedDb === "World") await runSeed(database, WorldSeedSql);
+      else if (selectedDb === "Film") await runSeed(database, FilmSeedSQL);
+      else if (selectedDb === "Sakila") await runSeed(database, SakilaSeedSQL);
       setDb(database);
 
       const prompts = sqlPrompts[selectedDb] ?? [];
