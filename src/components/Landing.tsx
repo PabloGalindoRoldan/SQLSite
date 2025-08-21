@@ -171,7 +171,7 @@ export default function LandingPage() {
 
         {/* Panel derecho */}
         <div
-          className="bg-white rounded-2xl shadow p-4 flex flex-col"
+          className="bg-white rounded-2xl shadow p-4 flex flex-col max-h-[100vh]"
           style={{
             boxShadow:
               status === "success"

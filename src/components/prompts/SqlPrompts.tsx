@@ -12,9 +12,7 @@ export const sqlPrompts: Record<string, PromptItem[]> = {
         /SELECT/i,
         /FROM\s+film/i,
         /JOIN\s+film_actor/i,
-        /JOIN\s+actor/i,
-        /WHERE/i,
-        /store_id\s*=\s*1/i,
+        /JOIN\s+actor/i,  
       ],
     },
     {
