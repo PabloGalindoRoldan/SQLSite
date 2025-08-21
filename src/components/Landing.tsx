@@ -11,6 +11,7 @@ export default function LandingPage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [selectedDb, setSelectedDb] = useState("World");
 
   // Cargar la BDD cuando se inicializa el sitio
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function LandingPage() {
 
       {/* Esquema de la Base de Datos */}
       <section className="bg-white rounded-2xl shadow p-4 mb-6">
-        <DatabaseSelector setDb={setDb} />
+        <DatabaseSelector setDb={setDb} selectedDb={selectedDb} setSelectedDb={setSelectedDb} />
       </section>
 
       {/* Área principal de trabajo */}
@@ -76,7 +77,7 @@ export default function LandingPage() {
           </div>
 
           {/* Componente de prompt */}
-          <SqlPromptBox />
+          <SqlPromptBox selectedDb={selectedDb} />
 
           {/* Entrada de consulta */}
           <textarea

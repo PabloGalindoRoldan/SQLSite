@@ -7,6 +7,8 @@ import SakilaSeedSQL from "./seeds/SakilaSeedSQL";
 
 type Props = {
   setDb: (db: any) => void;
+  selectedDb: string;
+  setSelectedDb: (db: string) => void;
 };
 
 const schemaMap: Record<string, string> = {
@@ -45,10 +47,12 @@ film_text      = (film_id, title, description)
   `,
 };
 
-const DatabaseSelector: React.FC<Props> = ({ setDb }) => {
-  const [selectedDb, setSelectedDb] = useState("World");
+const DatabaseSelector: React.FC<Props> = ({ setDb, selectedDb, setSelectedDb }) => {
   const [schemaPreview, setSchemaPreview] = useState(schemaMap[selectedDb]);
-
+  useEffect(() => {
+    setSchemaPreview(schemaMap[selectedDb]);
+  }, [selectedDb]);
+  
   const handleChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const dbName = e.target.value;
     setSelectedDb(dbName);
