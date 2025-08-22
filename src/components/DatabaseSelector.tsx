@@ -47,12 +47,16 @@ film_text      = (film_id, title, description)
   `,
 };
 
-const DatabaseSelector: React.FC<Props> = ({ setDb, selectedDb, setSelectedDb }) => {
+const DatabaseSelector: React.FC<Props> = ({
+  setDb,
+  selectedDb,
+  setSelectedDb,
+}) => {
   const [schemaPreview, setSchemaPreview] = useState(schemaMap[selectedDb]);
   useEffect(() => {
     setSchemaPreview(schemaMap[selectedDb]);
   }, [selectedDb]);
-  
+
   const handleChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const dbName = e.target.value;
     setSelectedDb(dbName);
@@ -72,35 +76,42 @@ const DatabaseSelector: React.FC<Props> = ({ setDb, selectedDb, setSelectedDb })
 
   return (
     <div className="relative w-full">
-        {/* Header */}
-        <div className="flex justify-center relative mb-3">
-            <h2 className="text-lg text-gray-700 font-semibold text-center">
-            Esquema de la Base de Datos
-            </h2>
-
-            {/* Dropdown in top-right corner */}
-            <div className="absolute right-0 top-0">
-            <select
-                className="border border-gray-300 text-blue-700 rounded-md p-1 text-sm"
-                value={selectedDb}
-                onChange={handleChange}
-            >
-                <option value="" disabled>
-                    Elegí la BDD
-                </option>
-                <option value="Film">Film</option>
-                <option value="World">World</option>
-                <option value="Sakila">Sakila</option>
-            </select>
-            </div>
+      {/* Header */}
+      <div className="relative mb-6 h-10">
+        {" "}
+        {/* 👈 reserve vertical space */}
+        {/* Centered title */}
+        <h2 className="absolute left-1/2 -translate-x-1/2 text-lg text-gray-700 font-semibold">
+          Esquema de la Base de Datos
+        </h2>
+        {/* Dropdown in top-right corner */}
+        <div className="absolute right-0 top-0">
+          <select
+            className="
+    border border-gray-300 text-blue-700 rounded-md 
+    p-1 text-sm
+    max-[560px]:text-xs max-[560px]:p-0.5 
+    max-[560px]:max-w-[18px]
+  "
+            value={selectedDb}
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Elegí la BDD
+            </option>
+            <option value="Film">Film</option>
+            <option value="World">World</option>
+            <option value="Sakila">Sakila</option>
+          </select>
         </div>
+      </div>
 
-        {/* Schema text */}
-        <div className="max-w-full overflow-x-auto rounded-md p-3 border-none flex justify-center">
-            <pre className="text-sm text-gray-700 text-left whitespace-pre-wrap">
-            {schemaPreview}
-            </pre>
-        </div>
+      {/* Schema text */}
+      <div className="max-w-full overflow-x-auto rounded-md p-3 border-none flex justify-center">
+        <pre className="text-sm text-gray-700 text-left whitespace-pre-wrap">
+          {schemaPreview}
+        </pre>
+      </div>
     </div>
   );
 };
