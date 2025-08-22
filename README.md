@@ -1,6 +1,6 @@
 SQL Learning Platform
 
-This project is a web-based tool to practice SQL queries directly in the browser. It includes sample databases such as Sakila and Chinook, allowing users to write, run, and test SQL queries interactively.
+This project is a web-based tool to practice SQL queries directly in the browser. It includes sample databases such as Sakila and World, allowing users to write, run, and test SQL queries interactively.
 
 The app validates answers against expected results for different exercises, helping users learn and improve their SQL skills.
 
