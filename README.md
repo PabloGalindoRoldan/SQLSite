@@ -1,12 +1,17 @@
-# React + Vite
+SQL Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web-based tool to practice SQL queries directly in the browser. It includes sample databases such as Sakila and Chinook, allowing users to write, run, and test SQL queries interactively.
 
-Currently, two official plugins are available:
+The app validates answers against expected results for different exercises, helping users learn and improve their SQL skills.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Built with:
 
-## Expanding the ESLint configuration
+React + Vite for the frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+sql.js to run SQLite in the browser
+
+TypeScript for type safety
+
+The project is live and fully functional online. While some validation logic can still be improved, the platform already provides a smooth and engaging experience for practicing SQL.
+
+LINK to the site: https://sqlsite.netlify.app/
