@@ -76,15 +76,14 @@ const DatabaseSelector: React.FC<Props> = ({
 
   return (
     <div className="relative w-full">
-      {/* Header */}
+      {/* Encabezado */}
       <div className="relative mb-6 h-10">
         {" "}
-        {/* 👈 reserve vertical space */}
-        {/* Centered title */}
+        {/* Título centrado */}
         <h2 className="absolute left-1/2 -translate-x-1/2 text-lg text-gray-700 font-semibold">
           Esquema de la Base de Datos
         </h2>
-        {/* Dropdown in top-right corner */}
+        {/* Desplegable en la esquina superior derecha */}
         <div className="absolute right-0 top-0">
           <select
             className="
@@ -106,7 +105,7 @@ const DatabaseSelector: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Schema text */}
+      {/* Texto del esquema */}
       <div className="max-w-full overflow-x-auto rounded-md p-3 border-none flex justify-center">
         <pre className="text-sm text-gray-700 text-left whitespace-pre-wrap">
           {schemaPreview}
