@@ -69,8 +69,8 @@ export default function LandingPage() {
 
       const isValid = validateAnswer(query, currentPrompt);
       if (isValid) {
-        //setShowConfetti(true);
-        //setFadeConfetti(false);
+        setShowConfetti(true);
+        setFadeConfetti(false);
         setError(null);
         setStatus("success");
 
