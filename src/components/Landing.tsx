@@ -124,6 +124,8 @@ export default function LandingPage() {
           <a
             className="hover:text-orange-500"
             href="https://docs.google.com/document/d/1CNiyND1OtaTER7AgvOCYiBmClQGCjCp-Ed2W9JGBn5Y/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             parcial
           </a>{" "}
@@ -222,6 +224,17 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <p className="text-gray-600 p-4">
+        Dejá un like en el{" "}
+        <a
+          className="hover:text-orange-500"
+          href="https://github.com/PabloGalindoRoldan/SQLSite"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Repo de GitHub
+        </a>{" "}
+      </p>
     </div>
   );
 }

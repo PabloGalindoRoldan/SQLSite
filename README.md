@@ -15,3 +15,8 @@ TypeScript for type safety
 The project is live and fully functional online. While some validation logic can still be improved, the platform already provides a smooth and engaging experience for practicing SQL.
 
 LINK to the site: https://sqlsite.netlify.app/
+
+## Feedback & Contributions
+
+If you find a bug, have an idea for improvement, or want to suggest new exercises, please open an [Issue](../../issues) or start a [Discussion](../../discussions).  
+Contributions are also welcome through pull requests!
