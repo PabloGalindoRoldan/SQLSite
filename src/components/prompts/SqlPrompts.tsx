@@ -276,7 +276,10 @@ export const sqlPrompts: Record<string, PromptItem[]> = {
         /SELECT/i,
         /language/i,
         /FROM\s+countrylanguage/i,
-        /WHERE.*countrycode.*MEX/i,
+        /WHERE.*countrycode/i,
+        /MEX/,
+        /isOfficial/i,
+        /T/
       ],
     },
     {
